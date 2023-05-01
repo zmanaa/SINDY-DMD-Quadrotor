@@ -4,28 +4,32 @@ This a repository for "__DATA DRIVEN DISCOVERY OF QUADROTOR EQUATIONS OF MOTION 
 We apply the recent sparse identification of nonlinear dynamics (SINDy) to discover the quadrotor governing equation from numerical simulation data.
 
 ## Current Status:
-- [x] Completed task
-- [~] Inapplicable task
-- [ ] Incomplete task
-  - [x] Sub-task 1
-  - [~] Sub-task 2
-  - [ ] Sub-task 3
-
-1. [x] Completed task
-1. [~] Inapplicable task
-1. [ ] Incomplete task
-   1. [x] Sub-task 1
-   1. [~] Sub-task 2
-   1. [ ] Sub-task 3
+- [x] Quad Simulation 
+  - [x] 2D Planar Quad simulation
+  - [x] Equation of Motion Implementation.
+  - [x] PD Controller.
+  - [ ] Full 3D Quad Simulation
+- [ ] SINDy with Control System Discovery 
+  - [x] SINDy Model Implementation.
+  - [x] SINDy Model Validation 
+  - [~] SINDy Model with Planar Quad.
+- [ ] Dynamic Mode Decomposition (DMD) with Control.
+  - [x] DMD Model Implementation
+  - [x] DMD Validation
+  - [ ] DMD with Planar Quad.
+  
+  $$x^2$$
 
 ## Installation
 ### For Planar Quadrotor Simulation:
 1. run the _main.m_ file.
 ### For SINDy Trainer:
 1. Dependinces
-2.  ``import numpy as np
-import seaborn as sb
-import pandas as pd
-import pysindy as ps
-import matplotlib.pyplot as plt``  
+  - Pyhton3
+    - For Windows: https://www.python.org/downloads/release/python-3113/
+    - For Linux
+  - ``numpy``
+  - ``pandas``
+  - ``pysindy``
+  - ``matplotlib``  
 
