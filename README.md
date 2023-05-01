@@ -17,12 +17,11 @@ We apply the recent sparse identification of nonlinear dynamics (SINDy) [arXiv](
   - [x] DMD Model Implementation
   - [x] DMD Validation
   - [ ] DMD with Planar Quad.
-  
-  $$x^2$$
 
 ## Installation
 ### For Planar Quadrotor Simulation:
 1. run the _main.m_ file.
+2. The data can be found in DATA FOR SINDY floder.
 ### For SINDy Trainer:
 1. Dependinces
   - Pyhton3
@@ -32,4 +31,5 @@ We apply the recent sparse identification of nonlinear dynamics (SINDy) [arXiv](
   - ``pandas`` - ``pip3 install pandas``
   - ``pysindy`` - ``pip3 install pysindy`` 
   - ``matplotlib`` - ``pip3 install matplotlib``
+2. Open Sindy_training.ipynb folder and run to get the model.
 
