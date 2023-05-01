@@ -12,7 +12,7 @@ We apply the recent sparse identification of nonlinear dynamics (SINDy) to disco
 - [ ] SINDy with Control System Discovery 
   - [x] SINDy Model Implementation.
   - [x] SINDy Model Validation 
-  - [~] SINDy Model with Planar Quad.
+  - [] SINDy Model with Planar Quad.
 - [ ] Dynamic Mode Decomposition (DMD) with Control.
   - [x] DMD Model Implementation
   - [x] DMD Validation
@@ -27,9 +27,9 @@ We apply the recent sparse identification of nonlinear dynamics (SINDy) to disco
 1. Dependinces
   - Pyhton3
     - For Windows: https://www.python.org/downloads/release/python-3113/
-    - For Linux
-  - ``numpy``
-  - ``pandas``
-  - ``pysindy``
-  - ``matplotlib``  
+    - For macOS: https://www.python.org/downloads/macos/ 
+  - ``numpy`` - ``pip3 install numpy``
+  - ``pandas`` - ``pip3 install pandas``
+  - ``pysindy`` - ``pip3 install pysindy`` 
+  - ``matplotlib`` - ``pip3 install matplotlib``
 
