@@ -1,7 +1,7 @@
 function desired_state = traj_diamond(t, cur_state)
 
-v_max = 2;
-a_max = 4;
+v_max = 0.5;
+a_max = 1;
 initial_pos1 = [0; 1.8];
 initial_pos2 = initial_pos1 + [cos(pi/4) -sin(pi/4); sin(pi/4) cos(pi/4)]*[2*v_max.^2/a_max; 0];
 initial_pos3 = initial_pos2 + [cos(-pi/4) -sin(-pi/4); sin(-pi/4) cos(-pi/4)]*[2*v_max.^2/a_max; 0];

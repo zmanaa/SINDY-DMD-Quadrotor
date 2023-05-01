@@ -12,11 +12,11 @@ params = get_quad_params;
 
 %%% DEFS
 
-T_TOTAL     = 30;             % Total simulated time
-T_STEP      = 0.001;          % this determines the time step at which the solution is given
+T_TOTAL     = 10;             % Total simulated time
+T_STEP      = 0.01;          % this determines the time step at which the solution is given
 T_OUT       = 0:T_STEP:T_TOTAL;
 TRAJ_TYPE   = traj_type;
-NOISE_FLAG  = 0;
+NOISE_FLAG  = 0;    
 
 % make trajectory
 traj_indx = 1;

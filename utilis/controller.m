@@ -36,7 +36,7 @@ Kpphi   = 80; % proportional gain
 
 % y-position gain
 Kvy     = 15; % derrivative gain
-Kpy     = 50; % proportional gain
+Kpy     = 60; % proportional gain
 
 % current state
 y       = state(1); 
