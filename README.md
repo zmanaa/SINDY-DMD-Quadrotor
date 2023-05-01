@@ -4,10 +4,19 @@ This a repository for "__DATA DRIVEN DISCOVERY OF QUADROTOR EQUATIONS OF MOTION 
 We apply the recent sparse identification of nonlinear dynamics (SINDy) to discover the quadrotor governing equation from numerical simulation data.
 
 ## Current Status:
-- A Planar Quad Rotor is 
-- ```math
-SE = \frac{\sigma}{\sqrt{n}}
-```
+- [x] Completed task
+- [~] Inapplicable task
+- [ ] Incomplete task
+  - [x] Sub-task 1
+  - [~] Sub-task 2
+  - [ ] Sub-task 3
+
+1. [x] Completed task
+1. [~] Inapplicable task
+1. [ ] Incomplete task
+   1. [x] Sub-task 1
+   1. [~] Sub-task 2
+   1. [ ] Sub-task 3
 
 ## Installation
 ### For Planar Quadrotor Simulation:
