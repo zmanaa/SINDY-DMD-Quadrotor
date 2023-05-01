@@ -3,7 +3,7 @@
 % For Paper, "DATA DRIVEN DISCOVERY OF QUADROTOR EQUATIONS OF MOTION USING
 %             SPARSE IDENTIFICATION OF NONLINEAR DYNAMICS AND DYNAMIC MODE
 %             DECOMPOSITION ALGORITHMS"
-% by Z. M. Manaa and M. R. Elbalshy. 
+% by Z. M. Manaa. 
 
 clear;
 clc; 
@@ -14,34 +14,27 @@ addpath("trajectories/")
 addpath("utilis/")
 
 
-%%% DEFS
+%%% DEFS (choose plot and figures options)
 PLOT_FLAG = 1;
-
+PLOT_TYPE = 'col'; % all states in one figure
+%PLOT_TYPE = 'ind'; % individual figures
+FIGURE_EXTENSION = 'png';  % {'png', 'svg'}
 
 %%% specify traj
-traj_type = 'diamond'; %{'step', 'line', 'sine', 'diamond'}
+TRAJ_TYPE = 'step'; %{'step', 'line', 'sine', 'diamond'}
 
 
 %%% run simulation
-[t_out, states_out, ctrl, ref_traj] = simulate_dynamics(traj_type);
+[t_out, states_out, ctrl, ref_traj] = simulate_dynamics(TRAJ_TYPE);
+
+%%% extract data to be used for SINDy algorithm
+all_out = [states_out, ctrl, ref_traj];
+t       = t_out;
+writematrix(all_out,'DATA/all_out.csv') 
+writematrix(t,'DATA/time.csv')
 
 
 %%% plot scheme
 if PLOT_FLAG
-    figure
-    plot(t_out, states_out(:,1)); % place holder
-    hold on
-    plot(t_out, ref_traj(:,1));
-    grid
-    figure
-    plot(t_out, states_out(:,2)); % place holder
-    hold on
-    plot(t_out, ref_traj(:,2));
-    grid
-    figure
-    plot(states_out(:,1), states_out(:,2)); % place holder
-    hold on
-    plot(ref_traj(:,1), ref_traj(:,2));
-    axis equal
-    grid
+    plot_data(t_out, states_out, ref_traj, ctrl, PLOT_TYPE, TRAJ_TYPE, FIGURE_EXTENSION)
 end

@@ -1,21 +1,233 @@
-function plot_data
+function plot_data(t_out, states_out, ref_traj, ...
+                ctrl, plot_case, traj_type, ext)
+% Copyright April, PICTURE_WIDTH23, All Rights Reserved.
+% Code by Zeyad M. Manaa.
+%
 
-hfig = figure;  % save the figure handle in a variable
-t = 0:0.02:10; x = t.*sin(2*pi*t)+ 2*rand(1,length(t)); % data
-plot(t,x,'k-','LineWidth',1.5,'DisplayName','$\Omega(t)$');
-xlabel('time $t$ (s)')
-ylabel('$\Omega$ (V)')
-fname = 'myfigure';
-
-picturewidth = 20; % set this parameter and keep it forever
-hw_ratio = 0.65; % feel free to play with this ratio
-set(findall(hfig,'-property','FontSize'),'FontSize',17) % adjust fontsize to your document
-set(findall(hfig,'-property','Interpreter'),'Interpreter','latex')
-set(findall(hfig,'-property','TickLabelInterpreter'),'TickLabelInterpreter','latex')
-set(hfig,'Units','centimeters','Position',[3 3 picturewidth hw_ratio*picturewidth])
-pos = get(hfig,'Position');
-set(hfig,'PaperPositionMode','Auto','PaperUnits','centimeters','PaperSize',[pos(3), pos(4)])
-print(hfig,fname,'-dpdf','-painters','-fillpage')
+%%% DEFS
+FIG_FOLDER_NAME = 'PLANAR_QUAD/';
+PATH            = 'SINDY-DMD-Quadrotor/FIGURES/';
+FIG_PATH        = ['FIGURES/' FIG_FOLDER_NAME];
+TYPE            = 'PLANAR';
+FIGURE_RATIO    = 0.55;
+PICTURE_WIDTH   = 25;
+FIGURE_EXT      = ext;
+TRAJ_TYPE       = upper(traj_type);
 
 
+%%% Making a directory for figures
+if ~exist(PATH, 'dir')
+    mkdir(FIG_PATH)
+end
+
+switch plot_case
+    case 'ind'
+        hfig = figure;  % save the figure handle in a variable
+        fname = 'myfigure';
+        plot(t_out, states_out(:,1), ...
+            'r-', ...
+            'LineWidth', 1.5, ...
+            'DisplayName','System response');
+        hold on
+        plot(t_out, ref_traj(:,1), ...
+            'b--', ...
+            'LineWidth', 2, ...
+            'DisplayName','Reference trajectory');
+        grid on;
+        xlabel('time t [s]')
+        ylabel('y [m]')
+        legend()
+        picturewidth = PICTURE_WIDTH; % set this parameter and keep it forever
+        hw_ratio = FIGURE_RATIO; % feel free to play with this ratio
+        set(findall(hfig,'-property','FontSize'), ...
+            'FontSize',17) 
+        set(findall(hfig,'-property','Interpreter'), ...
+            'Interpreter','latex')
+        set(findall(hfig,'-property','Interpreter'), ...
+            'Interpreter','latex')
+        set(findall(hfig,'-property','TickLabelInterpreter'), ...
+            'TickLabelInterpreter','latex')
+        set(hfig,'Units','centimeters','Position', ...
+            [3 3 picturewidth hw_ratio*picturewidth])
+        set(hfig,'color','w' )
+        set(hfig,'PaperPositionMode','Auto' )
+        if strcmp(FIGURE_EXT, 'png')
+             print('-dpng', '-painters','-cmyk', '-loose', ...
+            [FIG_PATH,'Y_POS_VS_TIME_QUAD_',TYPE, '_', TRAJ_TYPE, '_TRAJ','.png']);
+        elseif strcmp(FIGURE_EXT, 'svg')
+             print('-dsvg', '-painters','-cmyk', '-loose', ...
+            [FIG_PATH,'Y_POS_VS_TIME_QUAD_',TYPE, '_', TRAJ_TYPE, '_TRAJ','.svg']);
+        end
+
+        hfig = figure;
+        plot(t_out, states_out(:,2), ...
+            'r-', ...
+            'LineWidth', 1.5, ...
+            'DisplayName','System response');
+        hold on
+        plot(t_out, ref_traj(:,2), ...
+            'b--', ...
+            'LineWidth', 2, ...
+            'DisplayName','Reference trajectory');
+        grid on;
+        xlabel('time t [s]')
+        ylabel('z [m]')
+        legend()
+        picturewidth = PICTURE_WIDTH; % set this parameter and keep it forever
+        hw_ratio = FIGURE_RATIO; % feel free to play with this ratio
+        set(findall(hfig,'-property','FontSize'),'FontSize',17)
+        set(findall(hfig,'-property','Interpreter'), ...
+            'Interpreter','latex')
+        set(findall(hfig,'-property','TickLabelInterpreter'), ...
+            'TickLabelInterpreter','latex')
+        set(hfig,'Units','centimeters','Position', ...
+            [3 3 picturewidth hw_ratio*picturewidth])
+        set(hfig,'PaperPositionMode','Auto' )
+        set(hfig,'color','w' )
+        if strcmp(FIGURE_EXT, 'png')
+             print('-dpng', '-painters','-cmyk', '-loose', ...
+            [FIG_PATH,'Z_POS_VS_TIME_QUAD_',TYPE, '_', TRAJ_TYPE, '_TRAJ','.png']);
+        elseif strcmp(FIGURE_EXT, 'svg')
+             print('-dsvg', '-painters','-cmyk', '-loose', ...
+            [FIG_PATH,'Z_POS_VS_TIME_QUAD_',TYPE, '_', TRAJ_TYPE, '_TRAJ','.svg']);
+        end
+
+        hfig = figure;
+        plot(states_out(:,1), states_out(:,2), ...
+            'r-', ...
+            'LineWidth', 1.5, ...
+            'DisplayName','System response'); % place holder
+        hold on
+        plot(ref_traj(:,1), ref_traj(:,2), ...
+            'b--', ...
+            'LineWidth', 2, ...
+            'DisplayName','Reference trajectory');
+        grid on;
+        xlabel('y [m]')
+        ylabel('z [m]')
+        legend()
+        axis equal
+        picturewidth = PICTURE_WIDTH; % set this parameter and keep it forever
+        hw_ratio = FIGURE_RATIO; % feel free to play with this ratio
+        set(findall(hfig,'-property','FontSize'),'FontSize',17) 
+        set(findall(hfig,'-property','Interpreter'), ...
+            'Interpreter','latex')
+        set(findall(hfig,'-property','TickLabelInterpreter'), ...
+            'TickLabelInterpreter','latex')
+        set(hfig,'Units','centimeters','Position', ...
+            [3 3 picturewidth hw_ratio*picturewidth])
+        set(hfig,'PaperPositionMode','Auto' )
+        set(hfig,'color','w' )
+        if strcmp(FIGURE_EXT, 'png')
+             print('-dpng', '-painters','-cmyk', '-loose', ...
+            [FIG_PATH,'PHASE_PLANE_QUAD_',TYPE, '_', TRAJ_TYPE, '_TRAJ','.png']);
+        elseif strcmp(FIGURE_EXT, 'svg')
+             print('-dsvg', '-painters','-cmyk', '-loose', ...
+            [FIG_PATH,'PHASE_PLANE_QUAD_',TYPE, '_', TRAJ_TYPE, '_TRAJ','.svg']);
+        end
+
+    case 'col'
+        hfig = figure;
+        h_1d = subplot(5,3,[1,2,4,5,7,8,10,11,13,14]);
+        plot(states_out(:,1), states_out(:,2), ...
+            'r-', ...
+            'LineWidth', 1.5, ...
+            'DisplayName','System response'); % place holder
+        hold on
+        plot(ref_traj(:,1), ref_traj(:,2), ...
+            'b--', ...
+            'LineWidth', 2, ...
+            'DisplayName','Reference trajectory');
+        grid on; axis equal
+        xlabel('y [m]')
+        ylabel('z [m]')
+        legend()
+      
+        h_2d = subplot(5,3,[3]);
+        fname = 'myfigure';
+        plot(t_out, states_out(:,1), ...
+            'r-', ...
+            'LineWidth', 1.5, ...
+            'DisplayName','System response');
+        hold on
+        plot(t_out, ref_traj(:,1), ...
+            'b--', ...
+            'LineWidth', 2, ...
+            'DisplayName','Reference trajectory');
+        grid on;
+        xlabel('time t [s]')
+        ylabel('y [m]')
+      
+
+        h_3d = subplot(5,3,[6]);
+        fname = 'myfigure';
+        plot(t_out, states_out(:,2), ...
+            'r-', ...
+            'LineWidth', 1.5, ...
+            'DisplayName','System response');
+        hold on
+        plot(t_out, ref_traj(:,2), ...
+            'b--', ...
+            'LineWidth', 2, ...
+            'DisplayName','Reference trajectory');
+        grid on;
+        xlabel('time t [s]')
+        ylabel('z [m]')
+        h_4d = subplot(5,3,[9]);
+        fname = 'myfigure';
+        plot(t_out, states_out(:,3), ...
+            'r-', ...
+            'LineWidth', 1.5, ...
+            'DisplayName','System response');
+        hold on
+        plot(t_out, ref_traj(:,3), ...
+            'b--', ...
+            'LineWidth', 2, ...
+            'DisplayName','Reference trajectory');
+        grid on;
+        xlabel('time t [s]')
+        ylabel('$\phi$ [rad]')
+       
+        h_5d = subplot(5,3,[12]);
+        fname = 'myfigure';
+        plot(t_out, ctrl(:,1), ...
+            'r-', ...
+            'LineWidth', 1.5, ...
+            'DisplayName','$u_1$');
+        grid on;
+        xlabel('time t [s]')
+        ylabel('$u_1$')
+
+
+        h_6d = subplot(5,3,[15]);
+        fname = 'myfigure';
+        plot(t_out, ctrl(:,2), ...
+            'r-', ...
+            'LineWidth', 1.5, ...
+            'DisplayName','$u_2$');
+        grid on;
+        xlabel('time t [s]')
+        ylabel('$u_2$')
+        picturewidth = 25; % set this parameter and keep it forever
+        hw_ratio = FIGURE_RATIO; % feel free to play with this ratio
+        set(findall(hfig,'-property','FontSize'),'FontSize',12) % adjust fontsize to your document
+        set(findall(hfig,'-property','Interpreter'), ...
+            'Interpreter','latex')
+        set(findall(hfig,'-property','Interpreter'), ...
+            'Interpreter','latex')
+        set(findall(hfig,'-property','TickLabelInterpreter'), ...
+            'TickLabelInterpreter','latex')
+        set(hfig,'Units','centimeters','Position', ...
+            [3 3 picturewidth hw_ratio*picturewidth])
+        set(hfig,'PaperPositionMode','Auto' )
+        set(hfig,'color','w' )
+        %print(hfig,fname,'-dpdf','-painters','-fillpage')
+        if strcmp(FIGURE_EXT, 'png')
+             print('-dpng', '-painters','-cmyk', '-loose', ...
+            [FIG_PATH,'COLLECTIVE_GRAPH_QUAD_',TYPE, '_', TRAJ_TYPE, '_TRAJ','.png']);
+        elseif strcmp(FIGURE_EXT, 'svg')
+             print('-dsvg', '-painters','-cmyk', '-loose', ...
+            [FIG_PATH,'COLLECTIVE_GRAPH_QUAD_',TYPE, '_', TRAJ_TYPE, '_TRAJ','.svg']);
+        end
+       
 end
