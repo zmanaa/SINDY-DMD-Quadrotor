@@ -12,7 +12,7 @@ We apply the recent sparse identification of nonlinear dynamics (SINDy) [arXiv](
 - [ ] SINDy with Control System Discovery 
   - [x] SINDy Model Implementation.
   - [x] SINDy Model Validation 
-  - [] SINDy Model with Planar Quad.
+  - [x] SINDy Model with Planar Quad.
 - [ ] Dynamic Mode Decomposition (DMD) with Control.
   - [x] DMD Model Implementation
   - [x] DMD Validation
