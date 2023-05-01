@@ -1,7 +1,7 @@
 # SINDY-DMD Quadrotor
 This a repository for "__DATA DRIVEN DISCOVERY OF QUADROTOR EQUATIONS OF MOTION USING SPARSE IDENTIFICATION OF NONLINEAR DYNAMICS AND DYNAMIC MODE DECOMPOSITION ALGORITHMS__" Project for AE540 course.
 
-We apply the recent sparse identification of nonlinear dynamics (SINDy) to discover the quadrotor governing equation from numerical simulation data.
+We apply the recent sparse identification of nonlinear dynamics (SINDy) [https://arxiv.org/abs/1509.03580](arXiv) to discover the quadrotor governing equation from numerical simulation data.
 
 ## Current Status:
 - [x] Quad Simulation 
