@@ -29,7 +29,7 @@ TRAJ_TYPE = 'diamond'; %{'step', 'line', 'sine', 'diamond'}
 
 %%% extract data to be used for SINDy algorithm
 all_out = [t_out, states_out, ctrl, ref_traj];
-writematrix(all_out,'DATA FOR SINDY/all_out.csv') 
+writematrix(all_out,'DATA/all_out.csv') 
 
 
 %%% plot scheme
