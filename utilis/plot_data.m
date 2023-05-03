@@ -6,7 +6,7 @@ function plot_data(t_out, states_out, ref_traj, ...
 
 %%% DEFS
 FIG_FOLDER_NAME = 'PLANAR_QUAD/';
-PATH            = 'SINDY-DMD-Quadrotor/FIGURES/';
+PATH            = 'SINDY-DMD-Quadrotor/FIGURES/MATLAB_ORIGINAL_SIM';
 FIG_PATH        = ['FIGURES/' FIG_FOLDER_NAME];
 TYPE            = 'PLANAR';
 FIGURE_RATIO    = 0.55;
