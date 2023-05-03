@@ -50,11 +50,12 @@ dstates = [states(4);
         saturated_u1*cos(states(3))/params.mass - params.gravity;
         saturated_u2/params.Ixx];
 
-% linear
-%dstates = [states(4);
+% % linear
+% dstates = [states(4);
 %         states(5);
 %         states(6);
 %         -saturated_u1*states(3)/params.mass;
 %         saturated_u1/params.mass - params.gravity;
 %         saturated_u2/params.Ixx];
+
 end

@@ -21,17 +21,15 @@ PLOT_TYPE = 'col'; % all states in one figure
 FIGURE_EXTENSION = 'png';  % {'png', 'svg'}
 
 %%% specify traj
-TRAJ_TYPE = 'step'; %{'step', 'line', 'sine', 'diamond'}
+TRAJ_TYPE = 'diamond'; %{'step', 'line', 'sine', 'diamond'}
 
 
 %%% run simulation
 [t_out, states_out, ctrl, ref_traj] = simulate_dynamics(TRAJ_TYPE);
 
 %%% extract data to be used for SINDy algorithm
-all_out = [states_out, ctrl, ref_traj];
-t       = t_out;
-writematrix(all_out,'DATA/all_out.csv') 
-writematrix(t,'DATA/time.csv')
+all_out = [t_out, states_out, ctrl, ref_traj];
+writematrix(all_out,'DATA FOR SINDY/all_out.csv') 
 
 
 %%% plot scheme
